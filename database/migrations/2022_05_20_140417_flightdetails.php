@@ -16,6 +16,8 @@ return new class extends Migration
         Schema::create('flight_details', function (Blueprint $table) {
             $table->id();
             $table->string('flight_name');
+            $table->string('to');
+            $table->string('from');
             $table->string('flight_id')->unique('flight_details');
             $table->date('arrival_date');
             $table->date('departure_date');

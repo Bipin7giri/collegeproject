@@ -7,7 +7,7 @@ use Livewire\Component;
 
 class AddFlightDetails extends Component
 {
-    public $message, $flight_name, $flight_id, $arrival_date, $departure_date, $arrival_time, $departure_time, $seats, $hiddenId;
+    public $message, $flight_name, $flight_id, $to, $from, $arrival_date, $departure_date, $arrival_time, $departure_time, $seats, $hiddenId;
 
     public function save()
     {
@@ -18,6 +18,8 @@ class AddFlightDetails extends Component
             "departure_date"=>"required",
             "arrival_time"=>"required",
             "departure_time"=>"required",
+            "from"=>"required",
+            "to"=>"required",
             "seats"=>"required",
         ]);
         // DistrictModel::find($this->district_id)->area()->create(
@@ -34,6 +36,8 @@ class AddFlightDetails extends Component
         $flightDetails->arrival_date=$this->departure_date;
         $flightDetails->arrival_time=$this->arrival_time;
         $flightDetails->departure_time=$this->departure_time;
+        $flightDetails->to=$this->to;
+        $flightDetails->from=$this->from;
         $flightDetails->seats=$this->seats;
         $flightDetails->save();
 
@@ -45,10 +49,27 @@ class AddFlightDetails extends Component
         $this->flight_id= $singleData->flight_id;
         $this->departure_date= $singleData->departure_date;
         $this->arrival_time= $singleData->arrival_time;
+        $this->arrival_date= $singleData->arrival_date;
         $this->departure_time= $singleData->departure_time;
+        $this->to=$singleData->to;
+        $this->from=$singleData->from;
         $this->seats= $singleData->seats;
 
         $this->hiddenId=$singleData->id;
+    }
+  
+    public function addFlightDetails()
+    {
+        $this->flight_name = "";
+        $this->hiddenId = null;
+        $this->flight_id = "";
+        $this->departure_date = "";
+        $this->arrival_time = "";
+        $this->arrival_date = "";
+        $this->departure_time = "";
+        $this->seats = "";
+        $this->to = "";
+        $this->from = "";
     }
     public function render()
     {

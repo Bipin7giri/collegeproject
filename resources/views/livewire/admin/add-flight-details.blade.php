@@ -60,6 +60,12 @@
                                                             <div class="col-span-6 sm:col-span-4">
                                                                 <input class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm mt-1 block w-full"  type="time" placeholder="Location"  wire:model="departure_time">
                                                             </div>
+                                                            <div class="col-span-6 sm:col-span-4">
+                                                                <input class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm mt-1 block w-full"  type="text" placeholder="Location"  wire:model="to">
+                                                            </div>
+                                                            <div class="col-span-6 sm:col-span-4">
+                                                                <input class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm mt-1 block w-full"  type="text" placeholder="Location"  wire:model="from">
+                                                            </div>
 
                                                             <div class="col-span-6 sm:col-span-4">
                                                                 <input class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm mt-1 block w-full"  type="text" placeholder="Location"  wire:model="seats">
@@ -220,6 +226,26 @@
                                             <td class="pl-4">
                                                 <div class="flex items-center">
                                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                                                      </svg>
+                                                    <p class="text-sm leading-none text-gray-600 ml-2">
+                                                        {{ $flightDetail->to }}
+                                                    </p>
+                                                </div>
+                                            </td>
+                                            <td class="pl-4">
+                                                <div class="flex items-center">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                                                      </svg>
+                                                    <p class="text-sm leading-none text-gray-600 ml-2">
+                                                        {{ $flightDetail->from }}
+                                                    </p>
+                                                </div>
+                                            </td>
+                                            <td class="pl-4">
+                                                <div class="flex items-center">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                                         <path stroke-linecap="round" stroke-linejoin="round" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
                                                         <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                                       </svg>
@@ -231,8 +257,9 @@
                                             </td>
 
 
-                                            {{-- <td>
-                                                <button type="button" class="inline-block px-6 py-2.5 bg-green-500 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-green-600 hover:shadow-lg focus:bg-green-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-green-700 active:shadow-lg transition duration-150 ease-in-out" wire:click="editsportCenter({{$flightDetail->id}})">Edit</button></td> --}}
+                                            <td>
+                                                <button type="button" class="inline-block px-6 py-2.5 bg-green-500 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-green-600 hover:shadow-lg focus:bg-green-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-green-700 active:shadow-lg transition duration-150 ease-in-out" wire:click="editflight({{$flightDetail->id}})">Edit</button>
+                                            </td>
                                         </tr>
 
 
@@ -245,7 +272,7 @@
                         <div class="p-2">
                             <button type="button"
                                 class="inline-block px-6 py-2.5 bg-green-500 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-green-600 hover:shadow-lg focus:bg-green-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-green-700 active:shadow-lg transition duration-150 ease-in-out"><a
-                                    href="javascript:void(0)" wire:click="addsportCenter()">Add new Sport Center</a></button>
+                                    href="javascript:void(0)" wire:click="addFlightDetails()">Add new Sport Center</a></button>
                         </div>
                     </div>
 
