@@ -83,7 +83,7 @@
 
                 </div>
 
-                {{-- <div class="sm:px-6 w-full">
+                <div class="sm:px-6 w-full">
                     <div class="bg-white py-4 md:py-7 px-4 md:px-8 xl:px-10">
                         <div class="mt-7 overflow-x-auto">
                             <table class="w-full whitespace-nowrap">
@@ -155,14 +155,14 @@
                                         </th>
                                     <tr>
                                 </thead>
-                                @foreach ($sportCenters as $sportCenter)
+                                @foreach ($flightDetails as $flightDetail)
                                     <tbody>
                                         <tr tabindex="0" class="focus:outline-none h-16 border border-gray-100 rounded">
 
                                             <td class="">
                                                 <div class="flex items-center pl-5">
                                                     <p class="text-base font-medium leading-none text-gray-700 mr-2">
-                                                        {{ $sportCenter->id }}
+                                                        {{ $flightDetail->flight_id }}
                                                     </p>
 
                                                 </div>
@@ -173,7 +173,7 @@
                                                         <path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
                                                       </svg>
                                                     <p class="text-sm leading-none text-gray-600 ml-2">
-                                                        {{ $sportCenter->name }}
+                                                        {{ $flightDetail->flight_name }}
                                                     </p>
                                                 </div>
                                             </td>
@@ -185,13 +185,15 @@
                                                         <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                                                       </svg>
                                                     <p class="text-sm leading-none text-gray-600 ml-2">
-                                                        {{ $sportCenter->area()->first()->name }}
+                                                        {{ $flightDetail->arrival_date }}
                                                     </p>
                                                 </div>
                                             </td>
                                             <td class="pl-4">
                                                 <div class="flex items-center">  
-                                                    <img src="{{ asset('storage/' . $sportCenter->image()->first()->src) }}" alt="" class="object-scale-down h-48 w-96">
+                                                    <p class="text-sm leading-none text-gray-600 ml-2">
+                                                        {{ $flightDetail->arrival_time}}
+                                                    </p>
                                                 </div>
                                             </td>
                                              <td class="pl-4">
@@ -201,7 +203,7 @@
                                                         <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                                                       </svg>
                                                     <p class="text-sm leading-none text-gray-600 ml-2">
-                                                        {{ $sportCenter->location }}
+                                                        {{ $flightDetail->departure_date }}
                                                     </p>
                                                 </div>
                                             </td>
@@ -211,7 +213,7 @@
                                                         <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
                                                       </svg>
                                                     <p class="text-sm leading-none text-gray-600 ml-2">
-                                                        {{ $sportCenter->short_description }}
+                                                        {{ $flightDetail->departure_time }}
                                                     </p>
                                                 </div>
                                             </td>
@@ -223,21 +225,21 @@
                                                       </svg>
                                                     <p class="text-sm leading-none text-gray-600 ml-2">
                                                      
-                                                        {{ $sportCenter->arena_category()->first()->category_name }}
+                                                        {{ $flightDetail->seats}}
                                                     </p>
                                                 </div>
                                             </td>
 
 
-                                            <td>
-                                                <button type="button" class="inline-block px-6 py-2.5 bg-green-500 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-green-600 hover:shadow-lg focus:bg-green-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-green-700 active:shadow-lg transition duration-150 ease-in-out" wire:click="editsportCenter({{$sportCenter->id}})">Edit</button></td>
+                                            {{-- <td>
+                                                <button type="button" class="inline-block px-6 py-2.5 bg-green-500 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-green-600 hover:shadow-lg focus:bg-green-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-green-700 active:shadow-lg transition duration-150 ease-in-out" wire:click="editsportCenter({{$flightDetail->id}})">Edit</button></td> --}}
                                         </tr>
 
 
                                     </tbody>
                                 @endforeach
                             </table>
-                            <div class="mt-10 ">{{$sportCenters->links()}}</div>
+                            {{-- <div class="mt-10 ">{{$sportCenters->links()}}</div> --}}
 
                         </div>
                         <div class="p-2">
@@ -247,6 +249,6 @@
                         </div>
                     </div>
 
-                </div> --}}
+                </div>
             </div>
         </div>

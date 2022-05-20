@@ -52,6 +52,7 @@ class AddFlightDetails extends Component
     }
     public function render()
     {
-        return view('livewire.admin.add-flight-details');
+        $flightDetails = FlightDetails::all();
+        return view('livewire.admin.add-flight-details',['flightDetails'=>$flightDetails]);
     }
 }
