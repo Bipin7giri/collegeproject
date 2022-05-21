@@ -24,6 +24,8 @@ return new class extends Migration
             $table->time('arrival_time');
             $table->time('departure_time');
             $table->integer('seats');
+            $table->number('price');
+            $table->string('images');
             $table->timestamps();
         });
     }

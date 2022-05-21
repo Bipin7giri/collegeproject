@@ -4,10 +4,12 @@ namespace App\Http\Livewire\Admin;
 
 use App\Models\FlightDetails;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 class AddFlightDetails extends Component
 {
-    public $message, $flight_name, $flight_id, $to, $from, $arrival_date, $departure_date, $arrival_time, $departure_time, $seats, $hiddenId;
+    use WithFileUploads;
+    public $message, $flight_name,$images, $flight_id, $to, $from, $arrival_date, $departure_date, $arrival_time, $departure_time, $seats, $hiddenId;
 
     public function save()
     {
@@ -39,7 +41,9 @@ class AddFlightDetails extends Component
         $flightDetails->to=$this->to;
         $flightDetails->from=$this->from;
         $flightDetails->seats=$this->seats;
+        $flightDetails->images=$this->images->store('images','public');
         $flightDetails->save();
+       
 
     }
     public function editflight($id)
@@ -54,7 +58,7 @@ class AddFlightDetails extends Component
         $this->to=$singleData->to;
         $this->from=$singleData->from;
         $this->seats= $singleData->seats;
-
+        $this->images=$singleData->images;
         $this->hiddenId=$singleData->id;
     }
   
@@ -70,6 +74,7 @@ class AddFlightDetails extends Component
         $this->seats = "";
         $this->to = "";
         $this->from = "";
+        $this->images = "";
     }
     public function render()
     {

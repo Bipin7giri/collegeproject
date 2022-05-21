@@ -70,6 +70,9 @@
                                                             <div class="col-span-6 sm:col-span-4">
                                                                 <input class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm mt-1 block w-full"  type="text" placeholder="Location"  wire:model="seats">
                                                             </div>
+                                                            <div class="col-span-6 sm:col-span-4">
+                                                                <input class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm mt-1 block w-full"  type="file" placeholder="Location"  wire:model="images">
+                                                            </div>
 
                                                          
                                                              
@@ -253,6 +256,11 @@
                                                      
                                                         {{ $flightDetail->seats}}
                                                     </p>
+                                                </div>
+                                            </td>
+                                            <td class="pl-4">
+                                                <div class="flex items-center">
+                                                <img src="{{ asset('storage/' . $flightDetail->images) }}" alt="" class="object-scale-down h-48 w-96" alt="">
                                                 </div>
                                             </td>
 

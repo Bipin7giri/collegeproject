@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Livewire\Admin\AddFlightDetails;
+use App\Http\Livewire\BookTickets;
 use App\Http\Livewire\Home;
+use App\Http\Livewire\ViewTickets;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,9 +17,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Route::middleware([
     'auth:sanctum',
@@ -30,3 +32,8 @@ Route::middleware([
 });
 
 Route::get('/addflightdetails',AddFlightDetails::class)->name('addfligtdetails');
+
+Route::get('/',Home::class)->name('home');
+Route::get('/viewtickets',ViewTickets::class)->name('viewTickets');
+
+Route::get('/booktickets/{flight_id}',BookTickets::class)->name('booktickets');
