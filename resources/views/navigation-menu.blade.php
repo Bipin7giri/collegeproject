@@ -26,6 +26,7 @@
         <a href="{{route('home')}}" class="font-medium text-gray-500 hover:text-gray-900">Home</a>
 
        
+        <a href="{{route('feedback')}}" class="font-medium text-gray-500 hover:text-gray-900">Contact</a>
 
         <a href="#" class="font-medium text-gray-500 hover:text-gray-900">Marketplace</a>
 
@@ -61,8 +62,10 @@
         <a href="#" class="font-medium text-gray-500 hover:text-gray-900">Home</a>
 
         <a href="{{route('viewTickets')}}" class="font-medium text-gray-500 hover:text-gray-900">View Flights</a>
+       
+        <a href="{{route('history')}}" class="font-medium text-gray-500 hover:text-gray-900">View My history</a>
 
-        <a href="#" class="font-medium text-gray-500 hover:text-gray-900">Contact</a>
+        <a href="{{route('feedback')}}" class="font-medium text-gray-500 hover:text-gray-900">Contact</a>
 
         <a href="#" class="font-medium text-gray-500 hover:text-gray-900">Company</a>
 
@@ -99,6 +102,11 @@
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-jet-nav-link href="{{ route('addfligtdetails') }}" :active="request()->routeIs('dashboard')">
                         {{ __('addfligtdetails') }}
+                    </x-jet-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-jet-nav-link href="{{ route('feedbacklist') }}" :active="request()->routeIs('feedbacklist')">
+                        {{ __('Feed Back List') }}
                     </x-jet-nav-link>
                 </div>
                 

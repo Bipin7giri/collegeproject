@@ -58,17 +58,20 @@
                                                                 <input class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm mt-1 block w-full"  type="time" placeholder="Location"  wire:model="arrival_time">
                                                             </div>
                                                             <div class="col-span-6 sm:col-span-4">
-                                                                <input class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm mt-1 block w-full"  type="time" placeholder="Location"  wire:model="departure_time">
+                                                                <input class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm mt-1 block w-full"  type="time" placeholder=""  wire:model="departure_time">
                                                             </div>
                                                             <div class="col-span-6 sm:col-span-4">
-                                                                <input class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm mt-1 block w-full"  type="text" placeholder="Location"  wire:model="to">
+                                                                <input class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm mt-1 block w-full"  type="text" placeholder="to"  wire:model="to">
                                                             </div>
                                                             <div class="col-span-6 sm:col-span-4">
-                                                                <input class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm mt-1 block w-full"  type="text" placeholder="Location"  wire:model="from">
+                                                                <input class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm mt-1 block w-full"  type="text" placeholder="from"  wire:model="from">
                                                             </div>
 
                                                             <div class="col-span-6 sm:col-span-4">
-                                                                <input class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm mt-1 block w-full"  type="text" placeholder="Location"  wire:model="seats">
+                                                                <input class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm mt-1 block w-full"  type="text" placeholder="seats"  wire:model="seats">
+                                                            </div>
+                                                            <div class="col-span-6 sm:col-span-4">
+                                                                <input class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm mt-1 block w-full"  type="text" placeholder="price"  wire:model="price">
                                                             </div>
                                                             <div class="col-span-6 sm:col-span-4">
                                                                 <input class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm mt-1 block w-full"  type="file" placeholder="Location"  wire:model="images">
@@ -255,6 +258,18 @@
                                                     <p class="text-sm leading-none text-gray-600 ml-2">
                                                      
                                                         {{ $flightDetail->seats}}
+                                                    </p>
+                                                </div>
+                                            </td>
+                                            <td class="pl-4">
+                                                <div class="flex items-center">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                                                        <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                      </svg>
+                                                    <p class="text-sm leading-none text-gray-600 ml-2">
+                                                     
+                                                        {{ $flightDetail->price}}
                                                     </p>
                                                 </div>
                                             </td>

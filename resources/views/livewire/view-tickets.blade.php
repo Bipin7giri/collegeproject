@@ -27,7 +27,13 @@
                         d="M13 9l3 3m0 0l-3 3m3-3H8m13 0a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
             </a>
-            
+            <h1>{{$flightDetail->to}}</h1>
+            <h1>{{$flightDetail->from}}</h1>
+            <h1>{{$flightDetail->arrival_date}}</h1>
+            <h1>{{$flightDetail->arrival_time}}</h1>
+            <h1>{{$flightDetail->departure_date}}</h1>
+            <h1>{{$flightDetail->departure_time}}</h1>
+            <h1>{{$flightDetail->price}}</h1>
         </div>
         @endforeach
 

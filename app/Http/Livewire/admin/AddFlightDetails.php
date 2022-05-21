@@ -9,7 +9,7 @@ use Livewire\WithFileUploads;
 class AddFlightDetails extends Component
 {
     use WithFileUploads;
-    public $message, $flight_name,$images, $flight_id, $to, $from, $arrival_date, $departure_date, $arrival_time, $departure_time, $seats, $hiddenId;
+    public $message, $flight_name,$images, $price, $flight_id, $to, $from, $arrival_date, $departure_date, $arrival_time, $departure_time, $seats, $hiddenId;
 
     public function save()
     {
@@ -22,6 +22,7 @@ class AddFlightDetails extends Component
             "departure_time"=>"required",
             "from"=>"required",
             "to"=>"required",
+            "price"=>'required',
             "seats"=>"required",
         ]);
         // DistrictModel::find($this->district_id)->area()->create(
@@ -41,6 +42,7 @@ class AddFlightDetails extends Component
         $flightDetails->to=$this->to;
         $flightDetails->from=$this->from;
         $flightDetails->seats=$this->seats;
+        $flightDetails->price=$this->price;
         $flightDetails->images=$this->images->store('images','public');
         $flightDetails->save();
        
@@ -58,6 +60,7 @@ class AddFlightDetails extends Component
         $this->to=$singleData->to;
         $this->from=$singleData->from;
         $this->seats= $singleData->seats;
+        $this->price=$singleData->price;
         $this->images=$singleData->images;
         $this->hiddenId=$singleData->id;
     }
@@ -75,6 +78,7 @@ class AddFlightDetails extends Component
         $this->to = "";
         $this->from = "";
         $this->images = "";
+        $this->price="";
     }
     public function render()
     {
