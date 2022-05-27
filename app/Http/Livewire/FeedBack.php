@@ -18,11 +18,9 @@ class FeedBack extends Component
 
         "comment"=>"required",
     ]);
-    // DistrictModel::find($this->district_id)->area()->create(
-    //     ['name'=>$this->name]
-    // );
   
-        $comments= new ModelsFeedBack();
+
+    $comments= new ModelsFeedBack();
     $comments->name=$this->name;
     $comments->email=$this->email;
     $comments->comment=$this->comment;

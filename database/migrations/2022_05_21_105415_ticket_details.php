@@ -23,8 +23,10 @@ return new class extends Migration
             $table->string('phone_no');
             $table->string('address');
             $table->string('email');
+            $table->string('card_name');
+            $table->string('card_no');
             $table->foreignIdFor(FlightDetails::class)->constrained('flight_details');
-            $table->enum('type', ['esewa','khlati'])->nullable();
+            $table->enum('payment_type', ['PayPal','Esewa','card']);
             $table->string('citizen_number');
             $table->foreignIdFor(User::class)->constrained('users');
             $table->timestamps();
