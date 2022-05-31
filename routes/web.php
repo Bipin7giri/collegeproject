@@ -2,6 +2,9 @@
 
 use App\Http\Livewire\Admin\AddFlightDetails;
 use App\Http\Livewire\Admin\FeedBackList;
+use App\Http\Livewire\Admin\SeatsDetails;
+use App\Http\Livewire\Admin\TicketsHistory;
+use App\Http\Livewire\Admin\UsersList;
 use App\Http\Livewire\BookTickets;
 use App\Http\Livewire\FeedBack;
 use App\Http\Livewire\History;
@@ -42,6 +45,10 @@ Route::get('/viewhistory',History::class)->name('history');
 // admin
 Route::get('/addflightdetails',AddFlightDetails::class)->name('addfligtdetails');
 Route::get('/feedbacklist',FeedBackList::class)->name('feedbacklist');
+Route::get('/userslist',UsersList::class)->name('userlist');
+Route::get('/ticketshistory',TicketsHistory::class)->name('ticketsall');
+Route::get('/seats',SeatsDetails::class)->name('seats');
+
 });
 
 

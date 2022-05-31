@@ -33,6 +33,7 @@ class BookTickets extends Component
             "payment_type"=>'required'
             
         ]);
+        
      
         // DistrictModel::find($this->district_id)->area()->create(
         //     ['name'=>$this->name]

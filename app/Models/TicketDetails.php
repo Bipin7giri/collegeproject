@@ -16,7 +16,7 @@ class TicketDetails extends Model
         return $this->belongsTo(User::class);
         
     }
-    public function flightDetils()
+    public function flightDetails()
     {
         return $this->belongsTo(FlightDetails::class);
     }

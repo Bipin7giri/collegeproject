@@ -1,5 +1,3 @@
-
-
 <!-- component -->
 <!-- This is an example component -->
 <div>
@@ -99,14 +97,14 @@
                          </a>
                       </li>
                       <li>
-                         <a href="{{route('ticketsall')}}" class="text-base text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group ">
+                        <a href="{{route('ticketsall')}}" class="text-base text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group ">
                             <svg class="w-6 h-6 text-gray-500 flex-shrink-0 group-hover:text-gray-900 transition duration-75" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                <path fill-rule="evenodd" d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z" clip-rule="evenodd"></path>
                             </svg>
                             <span class="ml-3 flex-1 whitespace-nowrap">Tickets Details</span>
                          </a>
                       </li>
-                  
+                    
                       <li>
                         <a href="{{route('seats')}}" class="text-base text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group ">
                            <svg class="w-6 h-6 text-gray-500 flex-shrink-0 group-hover:text-gray-900 transition duration-75" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -116,38 +114,72 @@
                         </a>
                       </li>
                    </ul>
-                 
+               
                 </div>
              </div>
           </div>
        </aside>
        <div class="bg-gray-900 opacity-50 hidden fixed inset-0 z-10" id="sidebarBackdrop"></div>
+
        <div id="main-content" class="h-full w-full bg-gray-50 relative overflow-y-auto lg:ml-64">
-        {{-- <div>
+     <main>
+        <!-- component -->
+<div class="-my-2 py-2  sm:-mx-6 sm:px-6 lg:-mx-8 pr-10 lg:px-8">
+    <div class="align-middle inline-block min-w-full shadow overflow-hidden bg-white shadow-dashboard px-8 pt-3 rounded-bl-lg rounded-br-lg">
+        <table class="min-w-full">
+            <thead>
+                <tr>
+                    <th class="px-6 py-3 border-b-2 border-gray-300 text-left leading-4 text-blue-500 tracking-wider">ID</th>
+                    <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-blue-500 tracking-wider">Firstname</th>
+                    <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-blue-500 tracking-wider">lastname</th>
+                    <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-blue-500 tracking-wider">Email</th>
+                    <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-blue-500 tracking-wider">Address</th>
+                    <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-blue-500 tracking-wider">flight_names</th>
+                    <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-blue-500 tracking-wider">Payment type</th>
+                    <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-blue-500 tracking-wider">citizen_number</th>
+                    <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-blue-500 tracking-wider">Issued at</th>
+                                        
+                    <th class="px-6 py-3 border-b-2 border-gray-300"></th>
+                </tr>
+            </thead>
+            <tbody class="bg-white">
+                    <tr>
+                        @forelse ($history as $th)
+                        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
+                            <div class="flex items-center">
+                                <div>
+                                    <div class="text-sm leading-5 text-gray-800">{{$th->id}}</div>
+                                </div>
+                            </div>
+                        </td>  
+                        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
+                            <div class="text-sm leading-5 text-blue-900">{{$th->firstname}}</div>
+                        </td>
+                        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
+                            <div class="text-sm leading-5 text-blue-900">{{$th->lastname}}</div>
+                        </td>
+                        <td class="px-6 py-4 whitespace-no-wrap border-b text-blue-900 border-gray-500 text-sm leading-5">{{$th->email}}</td>
+                        <td class="px-6 py-4 whitespace-no-wrap border-b text-blue-900 border-gray-500 text-sm leading-5">{{$th->address}}</td>
+                        <td class="px-6 py-4 whitespace-no-wrap border-b text-blue-900 border-gray-500 text-sm leading-5">{{$th->flightDetails()->first()->flight_name}}</td>
+                        <td class="px-6 py-4 whitespace-no-wrap border-b text-blue-900 border-gray-500 text-sm leading-5">{{$th->payment_type}}</td>
+                        <td class="px-6 py-4 whitespace-no-wrap border-b text-blue-900 border-gray-500 text-sm leading-5">{{$th->citizen_number}}</td>
+                        <td class="px-6 py-4 whitespace-no-wrap border-b text-blue-900 border-gray-500 text-sm leading-5">{{$th->created_at}}</td>
+                        @empty
+                            NO Tikcets Issued
+                        @endforelse
+                     
+              </tr>
            
-          
-         
-        </div> --}}
-          
-        <main>
-            <!-- Component Start -->
-            @forelse($feedBacks as $feedBack)
-            <div class="flex w-full p-8 border-b border-gray-300">
-                <div class="flex flex-col flex-grow ml-4">
-                    <div class="flex">
-                        <span class="font-semibold">{{$feedBack->name}}</span>
-                        <span class="ml-1">{{$feedBack->email}}</span>
-                        <span class="ml-auto text-sm">{{$feedBack->created_at}}</span>
-                    </div>
-                    <p class="mt-1">{{$feedBack->comment}}</p>
-                    
-                </div>
-            </div>
-            @empty <h1>NO Result Found</h1>
-            @endforelse
-        </main>
+            </tbody>
+        </table>
+
+</div>
+</div>
+    </div>
+</div> 
+     </main>
        </div>
     </div>
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <script src="https://demo.themesberg.com/windster/app.bundle.js"></script>
- </div>
+ </div>s

@@ -2,56 +2,86 @@
     <script src="https://cdn.tailwindcss.com"></script>
     @if (!Auth::user())
 
-        <!-- component -->
 
-        <nav class="relative lg:px-44 pb-6 pt-8 flex items-center  justify-between sm:h-10 lg:justify-start"
-            aria-label="Global" style="background-color: #520c30e0">
+        <div class="antialiased bg-red-300 dark-mode:bg-gray-900">
+            <div class="w-full text-gray-700 bg-red-300 dark-mode:text-gray-200 dark-mode:bg-gray-800">
+                <div x-data="{ open: true }"
+                    class="flex flex-col max-w-screen-xl px-4 mx-auto md:items-center md:justify-between md:flex-row md:px-6 lg:px-8">
+                    <div class="flex flex-row items-center justify-between p-4">
+                        <a href="{{ route('home') }}"
+                            class="text-lg font-semibold tracking-widest text-gray-900 uppercase rounded-lg dark-mode:text-white focus:outline-none focus:shadow-outline">Fly
+                            world</a>
+                        <button class="rounded-lg md:hidden focus:outline-none focus:shadow-outline"
+                            @click="open = !open">
+                            <svg fill="currentColor" viewBox="0 0 20 20" class="w-6 h-6">
+                                <path x-show="!open" fill-rule="evenodd"
+                                    d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM9 15a1 1 0 011-1h6a1 1 0 110 2h-6a1 1 0 01-1-1z"
+                                    clip-rule="evenodd"></path>
+                                <path x-show="open" fill-rule="evenodd"
+                                    d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <nav :class="{ 'flex': open, 'hidden': !open }"
+                        class="flex-col flex-grow hidden pb-4 md:pb-0 md:flex md:justify-end md:flex-row">
+                        <a class="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                            href="{{ route('home') }}">Home</a>
+                        <a class="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                            href="{{ route('feedback') }}">Feedback</a>
+                        <a class="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                            href="{{ route('login') }}">Login</a>
+                        <a class="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                            href="{{ route('register') }}">Register</a>
 
-            <a href="{{ route('home') }}" class="font-bold text-3xl font-mono text-white pr-20 pb-5 ">Fly World</a>
-            <div class="flex lg:flex-row flex-col justify-center gap-10 ">
-                <div>
-                    <a href="{{ route('home') }}" class="font-medium text-md text-white ">Home</a>
-                </div>
-
-                <div>
-                    <a href="{{ route('feedback') }}" class="font-medium text-md text-white ">Contact</a>
-
-                </div>
-                <div>
-                    <a href="{{ route('login') }}" class="font-medium text-md text-white ">Login</a>
-
-                </div>
-                <div class="pb-5">
-                    <a href="{{ route('register') }}" class="font-medium text-md text-white">Register</a>
-
+                    </nav>
                 </div>
             </div>
-        </nav>
-        
-   
+        </div>
     @elseif(Auth::user()->type == 'user')
-        <div class="relative pt-6 px-4 sm:px-6 lg:px-8 py-5" style="background-color: #520c30e0">
-            <nav class="relative flex items-center justify-between sm:h-10 lg:justify-start" aria-label="Global">
-                <div class="hidden md:block md:ml-10 md:pr-4 md:space-x-8">
-                    <a href="{{ route('home') }}" class="font-bold text-3xl font-mono text-white pr-20 pb-5 ">Fly
-                        World</a>
-                    <a href="{{ route('viewTickets') }}" class="font-medium text-white ">View
-                        Flights</a>
-
-                    <a href="{{ route('history') }}" class="font-medium text-white ">View My
-                        history</a>
-
-                    <a href="{{ route('feedback') }}" class="font-medium text-white ">Contact</a>
-
-                    <form method="POST" action="{{ route('logout') }}" x-data class="inline text-white">
-                        @csrf
-                        <a href="{{ route('logout') }}" @click.prevent="$root.submit();">
-                            {{ __('Log Out') }}
-                        </a>
-                    </form>
-
+        <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+        <div class="">
+            <div class="antialiased bg-gray-100 dark-mode:bg-gray-900">
+                <div class="w-full text-gray-700 bg-white dark-mode:text-gray-200 dark-mode:bg-gray-800">
+                    <div x-data="{ open: true }"
+                        class="flex flex-col max-w-screen-xl px-4 mx-auto md:items-center md:justify-between md:flex-row md:px-6 lg:px-8">
+                        <div class="flex flex-row items-center justify-between p-4">
+                            <a href="{{ route('home') }}"
+                                class="text-lg font-semibold tracking-widest text-gray-900 uppercase rounded-lg dark-mode:text-white focus:outline-none focus:shadow-outline">Fly
+                                world</a>
+                            <button class="rounded-lg md:hidden focus:outline-none focus:shadow-outline"
+                                @click="open = !open">
+                                <svg fill="currentColor" viewBox="0 0 20 20" class="w-6 h-6">
+                                    <path x-show="!open" fill-rule="evenodd"
+                                        d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM9 15a1 1 0 011-1h6a1 1 0 110 2h-6a1 1 0 01-1-1z"
+                                        clip-rule="evenodd"></path>
+                                    <path x-show="open" fill-rule="evenodd"
+                                        d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                        clip-rule="evenodd"></path>
+                                </svg>
+                            </button>
+                        </div>
+                        <nav :class="{ 'flex': open, 'hidden': !open }"
+                            class="flex-col flex-grow hidden pb-4 md:pb-0 md:flex md:justify-end md:flex-row">
+                            <a class="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                                href="{{ route('home') }}">Home</a>
+                            <a class="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                                href="{{ route('viewTickets') }}">Tickets Details</a>
+                            <a class="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                                href="{{ route('history') }}">History</a>
+                            <a class="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                                href="{{ route('feedback') }}">Feedback</a>
+                            <form method="POST" action="{{ route('logout') }}" x-data class="mt-1 mr-2">
+                                @csrf
+                                <a class="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                                    href="{{ route('logout') }}" @click.prevent="$root.submit();">
+                                    {{ __('Log Out') }}
+                                </a>
+                            </form>
+                        </nav>
+                    </div>
                 </div>
-            </nav>
+            </div>
         </div>
     @elseif(Auth::user()->type == 'Admin')
         <nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
@@ -68,24 +98,16 @@
                         </div>
                         <!-- Navigation Links -->
                         <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                            <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                            <x-jet-nav-link href="{{ route('addfligtdetails') }}" :active="request()->routeIs('addfligtdetails')">
                                 {{ __('Dashboard') }}
                             </x-jet-nav-link>
                         </div>
-                        <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                            <x-jet-nav-link href="{{ route('addfligtdetails') }}" :active="request()->routeIs('addfligtdetails')">
-                                {{ __('addfligtdetails') }}
-                            </x-jet-nav-link>
-                        </div>
-                        <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                            <x-jet-nav-link href="{{ route('feedbacklist') }}" :active="request()->routeIs('feedbacklist')">
-                                {{ __('Feed Back List') }}
-                            </x-jet-nav-link>
-                        </div>
+
                         <div class=" px-5 py-5">
                             <form method="POST" action="{{ route('logout') }}" x-data class="inline text-white">
                                 @csrf
-                                <a href="{{ route('logout') }}" @click.prevent="$root.submit();" class="text-gray-700 font-bold text-xs font-serif">
+                                <a href="{{ route('logout') }}" @click.prevent="$root.submit();"
+                                    class="text-gray-700 font-bold text-xs font-serif">
                                     {{ __('Log Out') }}
                                 </a>
                             </form>
@@ -196,13 +218,12 @@
                                     <div class="border-t border-gray-100"></div>
 
                                     <!-- Authentication -->
-                                    <form method="POST" action="{{ route('logout') }}" x-data>
+                                    <form method="POST" action="{{ route('logout') }}" x-data class="mt-1 mr-2">
                                         @csrf
-
-                                        <x-jet-dropdown-link href="{{ route('logout') }}"
-                                            @click.prevent="$root.submit();">
+                                        <a class="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                                            href="{{ route('logout') }}" @click.prevent="$root.submit();">
                                             {{ __('Log Out') }}
-                                        </x-jet-dropdown-link>
+                                        </a>
                                     </form>
                                 </x-slot>
                             </x-jet-dropdown>
