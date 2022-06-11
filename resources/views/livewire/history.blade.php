@@ -5,9 +5,7 @@
         </div>
     @endif
 
-
-    <section class="py-5 px-24">
-
+    <section class="py-5 px-40">
         <table class="border-b drop-shadow-lg hidden lg:block ">
             <thead class="bg-black">
                 <tr>
@@ -25,37 +23,39 @@
             </thead>
 
             <tbody class="bg-red-50">
-                @forelse ($userTicketHistory as $history)
-                    @foreach ($flightNames as $flightName)
-                        <tr class="border-b">
-                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                                {{ $history->firstname }}</td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                                {{ $history->middlename }}</td>
-                                
-                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                                {{ $history->lastname }}</td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                                {{ $flightName->from }}</td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                                {{ $flightName->to }}</td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                                {{ $flightName->flight_name }}</td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Rs.
-                                {{ $flightName->price }}</td>
+                
+                @forelse ($userTicketHistory as $userTicket)
+                <tr class="border-b">
+                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                        {{ $userTicket->firstname }}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                        {{ $userTicket->middlename }}</td>
+                        
+                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                        {{ $userTicket->lastname }}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                        {{ $userTicket->flightDetails()->first()->from }}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                        {{ $userTicket->flightDetails()->first()->to }}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                        {{ $userTicket->flightDetails()->first()->flight_name}}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Rs.
+                        {{ $userTicket->flightDetails()->first()->price }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                            {{ $userTicket->card_name }}</td>
+                          
                                 <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                                    {{ $history->card_name }}</td>
-                                  
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                                            {{ $history->payment_type }}</td>    
-                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                                {{ $history->created_at }}</td>
+                                    {{ $userTicket->payment_type }}</td>    
+                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                        {{ $userTicket->created_at }}</td>
 
-                        </tr>
-                    @endforeach
-
-                @empty <h1 class="text-center font-bold text-red-700">No Ticket issued</h1>
+                </tr> 
+                @empty
+                   <h1 class="text-center text-6xl">No history</h1> 
                 @endforelse
+                
+
+              
 
 
             </tbody>

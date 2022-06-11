@@ -10,6 +10,6 @@ class FeedBackList extends Component
     public function render()
     {
         $feedBacks= FeedBack::all();
-        return view('livewire.admin.feed-back-list',["feedBacks"=>$feedBacks]);
+        return view('livewire.admin.feed-back-list',["feedBacks"=>$feedBacks])->layout('layouts.dashboard');
     }
 }

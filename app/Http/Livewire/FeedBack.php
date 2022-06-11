@@ -25,6 +25,7 @@ class FeedBack extends Component
     $comments->email=$this->email;
     $comments->comment=$this->comment;
     $comments->save();
+    return redirect('/');
    
 
 }

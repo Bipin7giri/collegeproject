@@ -19,6 +19,6 @@ class UsersList extends Component
         $count  = DB::table('users')->where('type','user')->count();
      
        
-        return view('livewire.admin.users-list',['users'=>$users,'latest'=>$latest,'count'=>$count]);
+        return view('livewire.admin.users-list',['users'=>$users,'latest'=>$latest,'count'=>$count])->layout('layouts.dashboard');
     }
 }

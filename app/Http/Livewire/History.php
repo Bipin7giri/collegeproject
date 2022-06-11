@@ -14,15 +14,15 @@ class History extends Component
     public function mount()
     {
        $this->history= Auth::user()->ticket()->select('flight_details_id')->get();
-    
+    //    dd($this->history);
        $this->userTicketHistory=Auth::user()->ticket()->get();
-        //  dd($this->history);
+    
     }
     public function render()
     {
     
        $flightNames=FlightDetails::find($this->history);
-    //   dd($flightNames);
+    
         return view('livewire.history',['userTicketHistory'=>$this->userTicketHistory,'flightNames' =>$flightNames]);
     }
 }

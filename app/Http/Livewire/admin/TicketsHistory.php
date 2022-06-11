@@ -11,6 +11,6 @@ class TicketsHistory extends Component
     {
         $history= TicketDetails::all();
         // dd($ticketHistory);
-        return view('livewire.admin.tickets-history',['history'=>$history]);
+        return view('livewire.admin.tickets-history',['history'=>$history])->layout('layouts.dashboard');
     }
 }

@@ -1,9 +1,7 @@
 <div>
     <script src="https://cdn.tailwindcss.com"></script>
     @if (!Auth::user())
-
-
-        <div class="antialiased bg-red-300 dark-mode:bg-gray-900">
+        <div class="antialiased  bg-red-300 dark-mode:bg-gray-900">
             <div class="w-full text-gray-700 bg-red-300 dark-mode:text-gray-200 dark-mode:bg-gray-800">
                 <div x-data="{ open: true }"
                     class="flex flex-col max-w-screen-xl px-4 mx-auto md:items-center md:justify-between md:flex-row md:px-6 lg:px-8">
@@ -99,6 +97,11 @@
                         <!-- Navigation Links -->
                         <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                             <x-jet-nav-link href="{{ route('addfligtdetails') }}" :active="request()->routeIs('addfligtdetails')">
+                                {{ __('Add Flight Details') }}
+                            </x-jet-nav-link>   
+                        </div>
+                        <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                            <x-jet-nav-link href="{{ route('feedbacklist') }}" :active="request()->routeIs('feedbacklist')">
                                 {{ __('Dashboard') }}
                             </x-jet-nav-link>
                         </div>
@@ -250,9 +253,13 @@
             <!-- Responsive Navigation Menu -->
             <div :class="{ 'block': open, 'hidden': !open }" class="hidden sm:hidden">
                 <div class="pt-2 pb-3 space-y-1">
-                    <x-jet-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                    <x-jet-responsive-nav-link href="{{ route('feedbacklist') }}" :active="request()->routeIs('feedbacklist')">
                         {{ __('Dashboard') }}
                     </x-jet-responsive-nav-link>
+                    <x-jet-responsive-nav-link href="{{ route('addfligtdetails') }}" :active="request()->routeIs('addfligtdetails')">
+                        {{ __('Add FLight Details') }}
+                    </x-jet-responsive-nav-link>
+
                 </div>
 
                 <!-- Responsive Settings Options -->

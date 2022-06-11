@@ -1,8 +1,4 @@
 <div>
-
-
-
-
     <!-- component -->
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
     <!-- Owl corusel -->
@@ -15,13 +11,9 @@
             <div class="max-w-5xl px-6 py-16 mx-auto">
                 <div class="items-center md:flex md:space-x-6">
                     <div class="md:w-1/2">
-                        <h3 class="text-4xl font-bold text-gray-800">Fly With Us <br> amet, consectetur
+                        <h3 class="text-4xl font-bold text-gray-800">Fly With Us <br>
                         </h3>
-                        <p class="max-w-md mt-4 text-gray-600">Duis aute irure dolor in reprehenderit in voluptate velit
-                            esse
-                            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt
-                            in
-                            culpa qui officia deserunt mollit anim id est laborum.</p>
+                        <p class="max-w-md mt-4 text-gray-600">Fly World is one of the first private airlines in Nepal to operate chartered helicopter services. Incorporated in the year , the airline was originally named 2021. Fly World is the only airline from Nepal and all of south and south-east Asia on the United Nations and World Food Program list of approved vendors, after thorough inspection of audit certified as safe to fly on.</p>
                         
                        <a  href="{{ route('login') }}" class="inline-block px-10 my-6 cursor-pointer py-2 border-2 border-red-500 text-red-500 font-medium text-lg leading-tight uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out">Book Flight</a>
 
@@ -40,46 +32,51 @@
         </section>
 
         <section>
-            <div class="flex lg:flex-row px-10 flex-col gap-5 py-8">
+            <div class="flex lg:flex-row px-10 flex-col gap-5">
                 <div class="owl-carousel">
                     @foreach ($flightDetails as $flightDetail)
-                        <div class="w-full drop-shadow-xl   rounded-2xl bg-white border-2">
-                            {{-- <img src="{{ asset('storage/' . $flightDetail->images) }}" alt="" class="object-scale-down h-48 w-96"> --}}
-
-                            <a href="{{ route('login') }}">
-                                <img src="{{ asset('storage/' . $flightDetail->images) }}" alt="pic"
-                                    class=" rounded-2xl w-full cursor-pointer h-44 pb-2">
-                            </a>
-                            <a href="{{ route('login') }}"
-                                class="font-bold text-2xl text-center text-red-900 px-5 uppercase  mb-4 cursor-pointer">
-                                {{ $flightDetail->flight_name }}
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 my-4 mx-3 inline " fill="none"
-                                    viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M13 9l3 3m0 0l-3 3m3-3H8m13 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                </svg>
-                            </a>
-                            <div class="px-3">
-                                <p class="font-md ">
-
-                                    <span class="font-bold text-red-800 px-2">From:</span>
-                                    {{ $flightDetail->from }}
-
-                                </p>
-                                <p class="font-md ">
-                                    <span class="font-bold text-red-800 px-2">To:</span>
-                                    {{ $flightDetail->to }}
-                                </p>
-
-                                <p class="font-md pb-2 ">
-                                    <span class="font-bold text-red-800 px-2">Seats:</span>
-                                    {{ $flightDetail->seats }}
-                                </p>
-
+                    <div class="lg:w-[700px] w-auto">
+                        <div class="container mx-auto max-w-sm  p-4 sm:w-1/2">
+                          <div class="card flex flex-col justify-center p-10 bg-white rounded-lg shadow-2xl">
+                            <div class="prod-title p-2">
+                              <p class="text-2xl uppercase text-gray-900 font-bold">{{$flightDetail->flight_name}}</p>
                             </div>
-
+                            <div class="prod-img">
+                              <img src="{{ asset('storage/' . $flightDetail->images) }}"
+                                   class="w-full object-cover object-center" />
+                            </div>
+                            <div class="prod-info py-2 grid gap-10">
+                              <div class="flex flex-col md:flex-row justify-between items-center text-gray-900">
+                                <p class="font-bold text-slate-400 text-md">TO</p>
+                                <p class="font-bold text-sm">{{$flightDetail->to}}</p>
+                              </div>
+                            </div>
+                            <div class="prod-info grid py-2 gap-10">
+                                <div class="flex flex-col md:flex-row justify-between items-center text-gray-900">
+                                  <p class="font-bold text-md text-slate-400">FROM</p>
+                                  <p class="font-bold text-sm">{{$flightDetail->from}}</p>
+                                </div>
+                              </div>
+                              <div class="prod-info grid py-2 gap-10">
+                                <div class="flex flex-col md:flex-row justify-between items-center text-gray-900">
+                                  <p class="font-bold text-md text-slate-400">departure_date</p>
+                                  <p class="font-bold text-sm">{{$flightDetail->departure_date}}</p>
+                                </div>
+                              </div>
+                              <div class="prod-info grid py-2 gap-10">
+                                <div class="flex flex-col md:flex-row justify-between items-center text-gray-900">
+                                  <p class="font-bold text-md text-slate-400">departure_time</p>
+                                  <p class="font-bold text-sm">{{$flightDetail->departure_time}}</p>
+                                </div>
+                              </div>
+                            <button
+                                        class="px-6 mt-5  text-center py-2 transition ease-in duration-200 text-red-500    uppercase rounded-full hover:bg-red-300 hover:text-white border-2 border-red-900 focus:outline-none"><a href="{{ route('booktickets', $flightDetail->id) }}">Book Now</a>
+                                        </button>
+                          </div>
                         </div>
+                      </div>
                     @endforeach
+   
                 </div>
             </div>
         </section>
@@ -96,13 +93,8 @@
                     </div>
 
                     <div class="mt-8 md:mt-0 md:w-1/2">
-                        <h3 class="text-2xl font-semibold text-gray-800">Lorem ipsum dolor sit <br> amet, consectetur
-                        </h3>
-                        <p class="max-w-md mt-4 text-gray-600">Duis aute irure dolor in reprehenderit in voluptate velit
-                            esse
-                            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt
-                            in
-                            culpa qui officia deserunt mollit anim id est laborum.</p>
+                        <h3 class="text-2xl font-semibold text-gray-800">Our Servies</h3>
+                        <p class="max-w-md mt-4 text-gray-600">Building on the extensive knowledge of the Nepalese terrain our airlines offer passengers the most wonderful options in religious tourism and mountain charters. We are also a complete air logistic support company with deep expertise in offering associated helicopter services including search and rescue services and medical emergency evacuations.</p>
                        <a  href="{{ route('login') }}" class="inline-block px-10 my-6 cursor-pointer py-2 border-2 border-red-500 text-red-500 font-medium text-lg leading-tight uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out">Book Flight</a>
                     </div>
                 </div>
@@ -111,35 +103,31 @@
 
         <section class="bg-white">
             <div class="max-w-5xl px-6 py-16 mx-auto">
-                <div class="md:flex md:justify-between">
-                    <h2 class="text-3xl font-semibold text-gray-800">Lorem ipsum dolor sit amet, consectetur <br>
-                        adipiscing
-                        elit, sed do eiusmod</h2>
+                             <h1 class="text-2xl text-cyan-500 text-center">TOUR PACKAGE</h1>
+                <div class="grid gap-8  mt-10 md:grid-cols-2 lg:grid-cols-3">
+                    <div class="px-6 border border-cyan-300 py-8 overflow-hidden bg-white rounded-md shadow-md">
+                         <div>
+                                <img src="https://cdn.elebase.io/173fe953-8a63-4a8a-8ca3-1bacb56d78a5/69437207-3eae-4909-88f9-e7bde4965643-lumbini-cover.jpg?q=90" alt="lumbani">
+                         </div>
+                        <p class="max-w-md mt-4 text-gray-400">Bhairahawa, also known as Siddharthanagar, is a significant economic and industrial center that earns its revenue primarily through trade between India and Nepal.
 
-                </div>
-
-                <div class="grid gap-8 mt-10 md:grid-cols-2 lg:grid-cols-3">
-                    <div class="px-6 py-8 overflow-hidden bg-white rounded-md shadow-md">
-                        <h2 class="text-xl font-medium text-gray-800">Audio</h2>
-                        <p class="max-w-md mt-4 text-gray-400">Lorem ipsum dolor sit amet, consectetur adipiscing Ac
-                            aliquam ac
-                            volutpat, viverra magna risus aliquam massa.</p>
+                            The city is a major trading center for goods to and from the several small and large scale industries that comprise the Bhairahawa Special Economic Zone, situated just 5 km south of the Indian border.</p>
                     </div>
 
-                    <div class="px-6 py-8 overflow-hidden bg-white rounded-md shadow-md">
-                        <h2 class="text-xl font-medium text-gray-800">Audio</h2>
-                        <p class="max-w-md mt-4 text-gray-400">Lorem ipsum dolor sit amet, consectetur adipiscing Ac
-                            aliquam ac
-                            volutpat,
-                            viverra magna risus aliquam massa.</p>
+                    <div class="px-6 py-8 border border-cyan-300 overflow-hidden bg-white rounded-md shadow-md">
+                       <div>
+                           <img src="https://www.shreeairlines.com/images/destination-bhadrapur.jpg" alt="pashupatinath">
+                       </div>
+                        <p class="max-w-md mt-4 text-gray-400">One of the oldest municipalities of Nepal, the town of Bhadrapur (and the municipality in Jhapa district in the Mechi zone) is also known as the "Tea City" of Nepal.
+
+                            You land at Bhadrapur airport, which is also known as Chandragadhi airport and serves both the cities of Bhadrapur and Chandragadhi. The airport is at an elevation of 300 feet and is capable of handling aircraft in the Nepalese Army Air Service.</p>
                     </div>
 
-                    <div class="px-6 py-8 overflow-hidden bg-white rounded-md shadow-md">
-                        <h2 class="text-xl font-medium text-gray-800">Audio</h2>
-                        <p class="max-w-md mt-4 text-gray-400">Lorem ipsum dolor sit amet, consectetur adipiscing Ac
-                            aliquam ac
-                            volutpat,
-                            viverra magna risus aliquam massa.</p>
+                    <div class="px-6 py-8  border border-cyan-300 overflow-hidden bg-white rounded-md shadow-md">
+                        <div>
+                            <img src="https://media.tacdn.com/media/attractions-splice-spp-674x446/06/96/67/56.jpg" alt="pokhera">  
+                        </div>
+                        <p class="max-w-md mt-4 text-gray-400">An expedition into Nepal would truly be insufficient without understanding what makes the country beautiful and unique. While every country has its people and culture, their own distinctive ethos and history, no country can boast of the stunning views of the Himalayan</p>
                     </div>
                 </div>
             </div>
@@ -147,14 +135,9 @@
 
         <section class="bg-white">
             <div class="max-w-5xl px-6 py-16 mx-auto text-center">
-                <h2 class="text-3xl font-semibold text-gray-800">Lorem ipsum dolor sit amet, <br> consectetur adipiscing
+                <h2 class="text-3xl font-semibold text-gray-800">
                 </h2>
-                <p class="max-w-lg mx-auto mt-4 text-gray-600">Duis aute irure dolor in reprehenderit in voluptate velit
-                    esse
-                    cillum
-                    dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
-                    officia
-                    deserunt mollit anim id est laborum.</p>
+                <p class="max-w-lg mx-auto mt-4 text-gray-600">Fly World is one of the first private airlines in Nepal to operate chartered helicopter services. Incorporated in the year , the airline was originally named 2021. Fly World is the only airline from Nepal and all of south and south-east Asia on the United Nations and World Food Program list of approved vendors, after thorough inspection of audit certified as safe to fly on.</p>
 
                 <img class="object-cover object-center w-full mt-16 rounded-md shadow h-80"
                     src="https://images.pexels.com/photos/3408744/pexels-photo-3408744.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1">
@@ -165,12 +148,8 @@
         <section class="bg-white">
             <div class="max-w-5xl px-6 py-16 mx-auto text-center">
                 <h2 class="text-3xl font-semibold text-gray-800">Our Destination</h2>
-                <p class="max-w-lg mx-auto mt-4 text-gray-600">Duis aute irure dolor in reprehenderit in voluptate velit
-                    esse
-                    cillum
-                    dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
-                    officia
-                    deserunt mollit anim id est laborum.</p>
+                <p class="max-w-lg mx-auto mt-4 text-gray-600">
+                               </p>
 
                 <div class="grid gap-8 mt-6 md:grid-cols-2 lg:grid-cols-4">
                     <div>
@@ -275,45 +254,43 @@
                                     d="M488.6 250.2L392 214V105.5c0-15-9.3-28.4-23.4-33.7l-100-37.5c-8.1-3.1-17.1-3.1-25.3 0l-100 37.5c-14.1 5.3-23.4 18.7-23.4 33.7V214l-96.6 36.2C9.3 255.5 0 268.9 0 283.9V394c0 13.6 7.7 26.1 19.9 32.2l100 50c10.1 5.1 22.1 5.1 32.2 0l103.9-52 103.9 52c10.1 5.1 22.1 5.1 32.2 0l100-50c12.2-6.1 19.9-18.6 19.9-32.2V283.9c0-15-9.3-28.4-23.4-33.7zM358 214.8l-85 31.9v-68.2l85-37v73.3zM154 104.1l102-38.2 102 38.2v.6l-102 41.4-102-41.4v-.6zm84 291.1l-85 42.5v-79.1l85-38.8v75.4zm0-112l-102 41.4-102-41.4v-.6l102-38.2 102 38.2v.6zm240 112l-85 42.5v-79.1l85-38.8v75.4zm0-112l-102 41.4-102-41.4v-.6l102-38.2 102 38.2v.6z">
                                 </path>
                             </svg>
-                            Tailwind ELEMENTS
+                            Fly World
                         </h6>
                         <p>
-                            Here you can use rows and columns to organize your footer content. Lorem ipsum dolor
-                            sit amet, consectetur adipisicing elit.
+                            Fly World is one of the first private airlines in Nepal to operate chartered helicopter services. Incorporated in the year , the airline was originally named 2021.
+                    </div>
+                    <div class="">
+                        <h6 class="uppercase font-semibold mb-4 flex justify-center md:justify-start">
+                            Cities
+                        </h6>
+                        <p class="mb-4">
+                            <a href="#!" class="text-white">Jhapa</a>
+                        </p>
+                        <p class="mb-4">
+                            <a href="#!" class="text-white">KTM</a>
+                        </p>
+                        <p class="mb-4">
+                            <a href="#!" class="text-white">NPJ</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-white">Pokhara</a>
                         </p>
                     </div>
                     <div class="">
                         <h6 class="uppercase font-semibold mb-4 flex justify-center md:justify-start">
-                            Products
+                            Airlines
                         </h6>
                         <p class="mb-4">
-                            <a href="#!" class="text-white">Angular</a>
+                            <a href="#!" class="text-white">ShreeArilines</a>
                         </p>
                         <p class="mb-4">
-                            <a href="#!" class="text-white">React</a>
+                            <a href="#!" class="text-white">Yeti Airlines</a>
                         </p>
                         <p class="mb-4">
-                            <a href="#!" class="text-white">Vue</a>
+                            <a href="#!" class="text-white">Buddha Airlines</a>
                         </p>
                         <p>
-                            <a href="#!" class="text-white">Laravel</a>
-                        </p>
-                    </div>
-                    <div class="">
-                        <h6 class="uppercase font-semibold mb-4 flex justify-center md:justify-start">
-                            Useful links
-                        </h6>
-                        <p class="mb-4">
-                            <a href="#!" class="text-white">Pricing</a>
-                        </p>
-                        <p class="mb-4">
-                            <a href="#!" class="text-white">Settings</a>
-                        </p>
-                        <p class="mb-4">
-                            <a href="#!" class="text-white">Orders</a>
-                        </p>
-                        <p>
-                            <a href="#!" class="text-white">Help</a>
+                            <a href="#!" class="text-white">Guna Airlines</a>
                         </p>
                     </div>
                     <div class="">
@@ -327,7 +304,7 @@
                                     d="M280.37 148.26L96 300.11V464a16 16 0 0 0 16 16l112.06-.29a16 16 0 0 0 15.92-16V368a16 16 0 0 1 16-16h64a16 16 0 0 1 16 16v95.64a16 16 0 0 0 16 16.05L464 480a16 16 0 0 0 16-16V300L295.67 148.26a12.19 12.19 0 0 0-15.3 0zM571.6 251.47L488 182.56V44.05a12 12 0 0 0-12-12h-56a12 12 0 0 0-12 12v72.61L318.47 43a48 48 0 0 0-61 0L4.34 251.47a12 12 0 0 0-1.6 16.9l25.5 31A12 12 0 0 0 45.15 301l235.22-193.74a12.19 12.19 0 0 1 15.3 0L530.9 301a12 12 0 0 0 16.9-1.6l25.5-31a12 12 0 0 0-1.7-16.93z">
                                 </path>
                             </svg>
-                            New York, NY 10012, US
+                           Kathmandu Nepal`
                         </p>
                         <p class="flex items-center justify-center md:justify-start mb-4">
                             <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="envelope"
@@ -336,7 +313,7 @@
                                     d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z">
                                 </path>
                             </svg>
-                            info@example.com
+                            FlyWorld.com
                         </p>
                         <p class="flex items-center justify-center md:justify-start mb-4">
                             <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="phone"
@@ -373,7 +350,7 @@
                 loop: true,
                 autoplayTimeout: 2000,
                 autoplayHoverPause: true,
-                margin: 10,
+                margin: 30,
                 responsiveClass: true,
                 responsive: {
                     0: {
