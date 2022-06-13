@@ -5,7 +5,7 @@
    <table class="min-w-full">
        <thead>
            <tr>
-               <th class="px-6 py-3 border-b-2 border-gray-300 text-left leading-4 text-blue-500 tracking-wider">ID</th>
+               <th class="px-6 py-3 border-b-2 border-gray-300 text-left leading-4 text-blue-500 tracking-wider">Ticket Number</th>
                <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-blue-500 tracking-wider">Firstname</th>
                <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-blue-500 tracking-wider">lastname</th>
                <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-blue-500 tracking-wider">Email</th>
@@ -25,7 +25,7 @@
                    <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
                        <div class="flex items-center">
                            <div>
-                               <div class="text-sm leading-5 text-gray-800">{{$th->id}}</div>
+                               <div class="text-sm leading-5 text-gray-800">{{$th->ticketID}}</div>
                            </div>
                        </div>
                    </td>  

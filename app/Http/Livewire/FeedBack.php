@@ -14,7 +14,7 @@ class FeedBack extends Component
 
     $this->validate([
         "name" => "required", 
-        "email"=>"required",
+        "email"=>"required|email",
 
         "comment"=>"required",
     ]);

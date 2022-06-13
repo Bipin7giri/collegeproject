@@ -7,19 +7,34 @@ use Livewire\Component;
 
 class ViewTickets extends Component
 {
-    public $search;
-    protected $queryString = ['search'];
+    public $search, $date, $to, $from,$allDetails;
+  
+    protected $queryString = ['search','to','from','date'];
+
+    // public function all()
+    // {
+    //     $this->allDetails = FlightDetails::all();
+    //     dd($this->allDetails);
+    // }
+    
     public function render()
     {
-            // $flightDetails = FlightDetails::all();
+        
+        $froms = FlightDetails ::select('from')->distinct()->get();
+        $tos = FlightDetails::select('to')->distinct()->get();  
             $flightDetails = FlightDetails::when($this->search,function($q){
-                return $q->where('flight_name','like','%'.$this->search.'%')
-                ->orwhere('to','like','%'.$this->search.'%')
-                ->orwhere('from','like','%'.$this->search.'%')
-                ->orwhere('price','like','%'.$this->search.'%');
+                return $q->where('flight_name','like','%'.$this->search.'%');
                 
+            })->when($this->from,function($q){
+                return $q->where('from',$this->from);
+                     
+            })->when($this->to,function($q){
+                return $q->where('to',$this->to);
+                     
+            })->when($this->date,function($q){
+                return $q->where('departure_date',$this->date);
             })->paginate(10);
-         
-        return view('livewire.view-tickets',["flightDetails"=>$flightDetails]);
+                               
+        return view('livewire.view-tickets',["flightDetails"=>$flightDetails,"froms"=>$froms,"tos"=>$tos]);
     }
 }

@@ -9,24 +9,29 @@ use Livewire\Component;
 
 class BookTickets extends Component
 {
-    public $flight_id, $name, $firstname, $lastname, $phone_no, $middlename, $address, $email, $citizen_number,$card_name,$payment_type, $card_no;
+    public $flight_id,$flightName, $ticketID, $name, $firstname, $validate, $lastname, $phone_no, $middlename, $address, $email, $citizen_number,$card_name,$payment_type, $card_no;
     public function mount($flight_id)
     {
         $this->flight_id= $flight_id;
         $this->name=Auth::user();
-    //   dd($this->name);
+        $flightName = FlightDetails::select('*')->where('id',$this->flight_id)->get();
+        foreach($flightName as $name){
+           $this->flightName= $name->flight_name;
+        }
+        $this->ticketID = $this->flightName.$this->flight_id.rand();
+   
+   
     }
       
     public function bookNow($id)
     {
-      
         
         $this->validate([
             "firstname" => "required", 
-            "lastname"=>"required",
+            "lastnam.e"=>"required",
             "phone_no"=>"required",
             "address"=>"required",
-            "email"=>"required",
+            "email"=>"required|email",
             "citizen_number"=>"required",
             "card_no"=>"required",
             "card_name"=>'required',
@@ -48,9 +53,11 @@ class BookTickets extends Component
         'address'=>$this->address,
         'citizen_number'=>$this->citizen_number,
         'email'=>$this->email,
+        'ticketID'=>$this->ticketID,
         "card_no"=>$this->card_no,
         "card_name"=>$this->card_name,
-        "payment_type"=>$this->payment_type
+        "payment_type"=>$this->payment_type,
+
         ]);
         $book=FlightDetails::find($id)->decrement('seats');
         session()->flash('message', 'Ticket Booked  successfully Fly World  .');
@@ -62,6 +69,7 @@ class BookTickets extends Component
 
     public function render()
     {
+
         $flightDetails = FlightDetails::find($this->flight_id);
         return view('livewire.book-tickets',['flightDetails'=>$flightDetails,'name'=>$this->name]);
     }

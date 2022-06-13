@@ -9,7 +9,7 @@
 <div>
     <!-- component -->
     <style>
-        @import url('https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.3.45/css/materialdesignicons.min.css')
+        @import url('https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.3.45/css/materialdesignicons.min.css');
 
     </style>
     <style>
@@ -96,8 +96,10 @@ module.exports = {
         }
 
     </style>
-
+    <script src="https://smtpjs.com/v3/smtp.js"></script>  
     <div class="min-w-screen min-h-screen bg-gray-50 py-5">
+    <input class="hidden" value="{{$ticketID}}" id ="ticketNumber">
+     {{-- {{$ticketID}} --}}
 
         <div class="bg-white flex lg:flex-row flex-col  p-5  gap-2 rounded-2xl drop-shadow-xl">
             <div>
@@ -213,7 +215,7 @@ module.exports = {
                                         <div class="py-3">
                                             <label for="email-address"
                                                 class="text-black font-serif font-bold">Email</label>
-                                            <input id="email-address" type="email" autocomplete="email" required
+                                            <input id="email"  name="email" type="email" autocomplete="email" required
                                                 class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                                                 placeholder="Email Address" wire:model="email">
                                             @error('email')
@@ -287,7 +289,7 @@ module.exports = {
                                     </label>
                                     <label for="type2" class="flex items-center cursor-pointer">
                                         <input type="radio" wire:model="payment_type"
-                                            class="form-radio h-5 w-5 text-indigo-500" id="type2" name="card"
+                                            class="form-radio h-5 w-5 text-indigo-500" 
                                             value="card">
                                         <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg"
                                             width="80" class="ml-3" />
@@ -334,7 +336,9 @@ module.exports = {
                         <div>
 
                         </div>
-                        <button type="submit" wire:click="bookNow({{ $flightDetails->id }})"
+                        <button 
+                        onclick="sendEmail()"
+                         type="submit" wire:click="bookNow({{ $flightDetails->id }})"
                             class="group relative text-lg w-full flex justify-center py-2 px-4 border border-transparent  font-medium rounded-md text-white bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-offset-2">
                             Book
                         </button>
@@ -347,6 +351,41 @@ module.exports = {
         </div>
 
     </div>
+    <script>
+    
+        function sendEmail() {
+const email = document.getElementById('email').value;
+const ticketID = document.getElementById('ticketNumber').value;
+const fname = document.getElementById('fname').value;
+
+ Email.send({
+    SecureToken : "34b664eb-bb49-4ef5-8702-2034bedcc298",
+    To : email,
+    From : "bipingiri27@gmail.com",
+    Subject : "Ticket Book successfully",
+    Body : "This is the mail to confirm you that your ticket has been successfully booked. Your ticket number is"+ticketID+ 
+    " Thank you for using our website."
+}).then(
+  message => alert("fill all the form")
+);
+   
+    }
+// function sendEmail() {
+//     // return alert('ok');
+// Email.send({
+//     Host : "smtp.gmail.com",
+//     Username : "bipingiri27@gmail.com",
+//     Password : "13reasonwhy",
+//     To : email,
+//     From : "bipingiri27@gmail.com",
+//     Subject : "Ticket Book successfully",
+//     Body : "This is the mail to confirm you that your ticket has been successfully booked. Thank you for using our website"
+// }).then(
+//   message => alert(message)
+// );
+//     }
+
+    </script>
 
     <!-- BUY ME A BEER AND HELP SUPPORT OPEN-SOURCE RESOURCES -->
 
