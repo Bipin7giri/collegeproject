@@ -13,11 +13,7 @@
 
     </style>
     <style>
-        /*
-module.exports = {
-    plugins: [require('@tailwindcss/forms'),]
-};
-*/
+
         .form-radio {
             -webkit-appearance: none;
             -moz-appearance: none;
@@ -100,7 +96,6 @@ module.exports = {
     <div class="min-w-screen min-h-screen bg-gray-50 py-5">
     <input class="hidden" value="{{$ticketID}}" id ="ticketNumber">
      {{-- {{$ticketID}} --}}
-
         <div class="bg-white flex lg:flex-row flex-col  p-5  gap-2 rounded-2xl drop-shadow-xl">
             <div>
                 <h3 class="font-bold"><span class=" font-bold  text-xl  text-red-800 font-serif px-2">FlightName :
@@ -142,7 +137,16 @@ module.exports = {
 
                 <h3 class="font-bold"><span
                         class=" font-bold text-xl  text-red-800 font-serif px-2">Price:</span>Rs.
-                    {{ $flightDetails->price }}</h3>
+                        @if($flightDetails->seats<=5)
+                        {{$flightDetails->price+1500}}
+                        @elseif($flightDetails->seats<=10)
+                        {{$flightDetails->price+1000}}
+                        @elseif($flightDetails->seats<=15)
+                        {{$flightDetails->price+500}}
+                        @else
+                        {{$flightDetails->price}}
+                        @endif
+                        </h3>
             </div>
 
         </div>
@@ -268,7 +272,7 @@ module.exports = {
                             <div class="w-full p-3 border-b border-gray-200">
                                 <div class="mb-5 flex justify-around">
                                     <label for="type1" class="flex items-center cursor-pointer">
-                                        <input type="radio" wire:model="payment_type" value="PayPal"
+                                        <input type="radio" wire:model="payment_type" value="card"
                                             class="form-radio h-5 w-5 text-indigo-500" value="MasterCard" name="card"
                                             id="type1">
                                         <img src="https://leadershipmemphis.org/wp-content/uploads/2020/08/780370.png"
@@ -290,7 +294,7 @@ module.exports = {
                                     <label for="type2" class="flex items-center cursor-pointer">
                                         <input type="radio" wire:model="payment_type"
                                             class="form-radio h-5 w-5 text-indigo-500" 
-                                            value="card">
+                                            value="PayPal">
                                         <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg"
                                             width="80" class="ml-3" />
                                             @error('payment_type')
@@ -366,27 +370,12 @@ const fname = document.getElementById('fname').value;
     Body : "This is the mail to confirm you that your ticket has been successfully booked. Your ticket number is"+ticketID+ 
     " Thank you for using our website."
 }).then(
-  message => alert("fill all the form")
+//   message => alert("fill all the form")
 );
    
     }
-// function sendEmail() {
-//     // return alert('ok');
-// Email.send({
-//     Host : "smtp.gmail.com",
-//     Username : "bipingiri27@gmail.com",
-//     Password : "13reasonwhy",
-//     To : email,
-//     From : "bipingiri27@gmail.com",
-//     Subject : "Ticket Book successfully",
-//     Body : "This is the mail to confirm you that your ticket has been successfully booked. Thank you for using our website"
-// }).then(
-//   message => alert(message)
-// );
-//     }
+
 
     </script>
-
-    <!-- BUY ME A BEER AND HELP SUPPORT OPEN-SOURCE RESOURCES -->
 
 </div>

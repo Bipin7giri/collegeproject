@@ -9,8 +9,9 @@ use Livewire\WithFileUploads;
 class AddFlightDetails extends Component
 {
     use WithFileUploads;
-    public $message, $flight_name,$images, $price, $flight_id, $to, $from, $arrival_date, $departure_date, $arrival_time, $departure_time, $seats, $hiddenId;
-
+    public $message,$seatCompare, $priceCompare, $flight_name,$images, $price, $flight_id, $to, $from, $arrival_date, $departure_date, $arrival_time, $departure_time, $seats, $hiddenId;
+   
+  
     public function save()
     {
         $this->validate([

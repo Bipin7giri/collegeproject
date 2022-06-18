@@ -108,6 +108,7 @@
                            <span class="ml-3 flex-1 whitespace-nowrap">Seats Details</span>
                         </a>
                       </li>
+                     
                    </ul>
                  
                 </div>

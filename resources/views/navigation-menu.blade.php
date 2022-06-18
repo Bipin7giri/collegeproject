@@ -105,6 +105,11 @@
                                 {{ __('Dashboard') }}
                             </x-jet-nav-link>
                         </div>
+                        <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                            <x-jet-nav-link href="{{ route('addalertmessage') }}" :active="request()->routeIs('addalertmessage')">
+                                {{ __('Add Alert Message') }}
+                            </x-jet-nav-link>
+                        </div>
 
                         <div class=" px-5 py-5">
                             <form method="POST" action="{{ route('logout') }}" x-data class="inline text-white">

@@ -19,7 +19,7 @@
           </script>
     @endif
 
-    <section class="py-5 px-40">
+    <section class="py-5 px-20">
         <table class="border-b drop-shadow-lg hidden lg:block ">
             <thead class="bg-black">
                 <tr>
@@ -57,7 +57,7 @@
                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                         {{ $userTicket->flightDetails()->first()->flight_name}}</td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Rs.
-                        {{ $userTicket->flightDetails()->first()->price }}</td>
+                        {{ $userTicket->fare }}</td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                             {{ $userTicket->card_name }}</td>
                           

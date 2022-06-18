@@ -5,7 +5,18 @@
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
     <link rel="stylesheet" href="owlcarousel/owl.theme.default.min.css" />
-
+    @forelse ($messages as $message)
+    <div class="bg-yellow-100  rounded-lg py-5 px-6 mb-3 text-base text-yellow-700 inline-flex items-center w-full" role="alert">
+        <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="exclamation-triangle" class="w-4 h-4 mr-2 fill-current" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+          <path fill="currentColor" d="M569.517 440.013C587.975 472.007 564.806 512 527.94 512H48.054c-36.937 0-59.999-40.055-41.577-71.987L246.423 23.985c18.467-32.009 64.72-31.951 83.154 0l239.94 416.028zM288 354c-25.405 0-46 20.595-46 46s20.595 46 46 46 46-20.595 46-46-20.595-46-46-46zm-43.673-165.346l7.418 136c.347 6.364 5.609 11.346 11.982 11.346h48.546c6.373 0 11.635-4.982 11.982-11.346l7.418-136c.375-6.874-5.098-12.654-11.982-12.654h-63.383c-6.884 0-12.356 5.78-11.981 12.654z"></path>
+        </svg>
+   <span class="text-center">{{$message->message}}
+</span>      
+  </div>
+    @empty
+        
+    @endforelse
+  
     <div>
         <section class="bg-white">
             <div class="max-w-5xl px-6 py-16 mx-auto">
@@ -15,7 +26,7 @@
                         </h3>
                         <p class="max-w-md mt-4 text-gray-600">Fly World is one of the first private airlines in Nepal to operate chartered helicopter services. Incorporated in the year , the airline was originally named 2021. Fly World is the only airline from Nepal and all of south and south-east Asia on the United Nations and World Food Program list of approved vendors, after thorough inspection of audit certified as safe to fly on.</p>
                         
-                       <a  href="{{ route('login') }}" class="inline-block px-10 my-6 cursor-pointer py-2 border-2 border-red-500 text-red-500 font-medium text-lg leading-tight uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out">Book Flight</a>
+                       <a  href="{{ route('viewTickets') }}" class="inline-block px-10 my-6 cursor-pointer py-2 border-2 border-red-500 text-red-500 font-medium text-lg leading-tight uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out">Book Flight</a>
 
                     </div>
 
@@ -95,7 +106,7 @@
                     <div class="mt-8 md:mt-0 md:w-1/2">
                         <h3 class="text-2xl font-semibold text-gray-800">Our Servies</h3>
                         <p class="max-w-md mt-4 text-gray-600">Building on the extensive knowledge of the Nepalese terrain our airlines offer passengers the most wonderful options in religious tourism and mountain charters. We are also a complete air logistic support company with deep expertise in offering associated helicopter services including search and rescue services and medical emergency evacuations.</p>
-                       <a  href="{{ route('login') }}" class="inline-block px-10 my-6 cursor-pointer py-2 border-2 border-red-500 text-red-500 font-medium text-lg leading-tight uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out">Book Flight</a>
+                       <a  href="{{ route('viewTickets') }}" class="inline-block px-10 my-6 cursor-pointer py-2 border-2 border-red-500 text-red-500 font-medium text-lg leading-tight uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out">Book Flight</a>
                     </div>
                 </div>
             </div>

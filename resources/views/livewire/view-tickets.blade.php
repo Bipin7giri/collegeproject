@@ -1,11 +1,13 @@
 <div>
 
-    <section class="px-0 lg:px-40">
-        <div class="flex justify-between items-center py-16">
-            <div class="flex justify-center">
+    <section class="px-0 lg:px-24">
+        
+         <div class="flex py-5 gap-5 justify-center lg:flex-row flex-col my-10 justify-items-center bg-slate-200 p-5 border-2 rounded-lg" >
                
                 <div class="mb-3 xl:w-72">
-                  <select class="form-select appearance-none
+                    <label class="text-center">ORIGIN</label>
+                
+                    <select class="form-select appearance-none
                     block
                     w-full
                     px-3
@@ -20,7 +22,7 @@
                     ease-in-out
                     m-0
                     focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label="Default select example" wire:model="from">
-                    <option disabled >ORIGIN</option>
+                    <option disabled    >ORIGIN</option>
                     @forelse ($froms as $from)
                     <option value="{{$from->from}}">{{$from->from}}</option>
                 
@@ -30,9 +32,10 @@
                       
                   </select>
                 </div>
-              </div>
+              
               <div class="flex justify-center">
                 <div class="mb-3 xl:w-72">
+                    <label class="text-center">DESTINATION</label>
                   <select class="form-select appearance-none
                     block
                     w-full
@@ -48,7 +51,7 @@
                     ease-in-out
                     m-0
                     focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label="Default select example" wire:model ="to">
-                      <option selected>DESTINATION</option>
+                      <option disabled>DESTINATION</option>
                       @forelse ($tos as $to)
                       <option value="{{$to->to}}">{{$to->to}}</option>
                           
@@ -59,14 +62,27 @@
                   </select>
                 </div>
               </div>
-              <div class="flex justify-center">
-                <input type="date" wire:model="date">
+             
+              <div class="">
+                <label class="text-center">Date</label>
+                <input class="block
+                w-full
+                px-3
+                py-1.5
+                text-base
+                font-normal
+                text-gray-700
+                bg-white bg-clip-padding bg-no-repeat
+                border border-solid border-gray-300
+                rounded
+                transition
+                ease-in-out
+                m-0
+                focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" type="date" wire:model="date">
               </div>
            
-    
-      
         </div>
-        <table class="min-w-full hidden lg:block text-center rounded-xl drop-shadow-lg">
+        <table class="min-w-full hidden lg:block text-center rounded-xl drop-shadow-lg ">
             <thead class="border-b bg-gray-800">
                 <tr>
                     <th scope="col" class="text-sm font-medium text-white px-6 py-4">Flight</th>
@@ -137,8 +153,18 @@
                     {{ $flightDetail->arrival_date }}</td>
                 <td class="text-md text-gray-900  px-6 py-4 font-bold whitespace-nowrap">
                     {{ $flightDetail->seats }}</td>
-                <td class="text-md text-gray-900 font-md px-6 py-4 whitespace-nowrap">Rs.
-                    {{ $flightDetail->price }}</td>
+                <td class="text-md text-gray-900 font-md px-6 py-4 whitespace-nowrap">Rs. 
+             
+                @if($flightDetail->seats<=5)
+                {{$flightDetail->price+1500}}
+                @elseif($flightDetail->seats<=10)
+                {{$flightDetail->price+1000}}
+                @elseif($flightDetail->seats<=15)
+                {{$flightDetail->price+500}}
+                @else
+                {{$flightDetail->price}}
+                @endif
+                </td>
                 <td class="text-md text-gray-900 font-md px-6 py-4 whitespace-nowrap">
                     <a href="{{ route('booktickets', $flightDetail->id) }}"
                         :active="request() - > routeIS('booktickets')"
@@ -150,14 +176,16 @@
                         </svg>
                     </a>
                 </td>
-
+              
             </tr>
             @empty
                 <h1 class="text-gray-500">NO RESULT FOUND</h1>
             @endforelse
           
-
         </table>
+        {{-- <h1>hello</h1>   --}}
+        {{ $flightDetails->links()}}
+      
 
     </section>
 
