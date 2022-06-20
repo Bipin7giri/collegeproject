@@ -98,45 +98,45 @@
      {{-- {{$ticketID}} --}}
         <div class="bg-white flex lg:flex-row flex-col  p-5  gap-2 rounded-2xl drop-shadow-xl">
             <div>
-                <h3 class="font-bold"><span class=" font-bold  text-xl  text-red-800 font-serif px-2">FlightName :
+                <h3 class="font-bold"><span class=" font-bold  text-xl  text-slate-800 font-serif px-2">FlightName :
                     </span>{{ $flightDetails->flight_name }}</h3>
 
             </div>
 
             <div>
                 <h3 class="font-bold"><span
-                        class=" font-bold  text-xl  text-red-800 font-serif px-2">From:</span>{{ $flightDetails->from }}
+                        class=" font-bold  text-xl  text-slate-800 font-serif px-2">From:</span>{{ $flightDetails->from }}
                 </h3>
             </div>
 
             <div>
                 <h3 class="font-bold"><span
-                        class=" font-bold  text-xl text-red-800 font-serif px-2">To:</span>{{ $flightDetails->to }}
+                        class=" font-bold  text-xl text-slate-800 font-serif px-2">To:</span>{{ $flightDetails->to }}
                 </h3>
 
             </div>
 
             <div>
-                <h3 class="font-bold"><span class="font-bold  text-xl  text-red-800 font-serif px-2">
+                <h3 class="font-bold"><span class="font-bold  text-xl  text-slate-800 font-serif px-2">
                         Seats:</span>{{ $flightDetails->seats }}</h3>
 
             </div>
 
             <div>
-                <h3 class="font-bold"><span class="font-bold  text-xl  text-red-800 font-serif px-2">Arrival
+                <h3 class="font-bold"><span class="font-bold  text-xl  text-slate-800 font-serif px-2">Arrival
                         Time:</span>{{ $flightDetails->arrival_time }}</h3>
 
             </div>
 
             <div>
-                <h3 class="font-bold"><span class=" font-bold text-xl   text-red-800 font-serif px-2">Deprature
+                <h3 class="font-bold"><span class=" font-bold text-xl   text-slate-800 font-serif px-2">Deprature
                         Time:</span>{{ $flightDetails->departure_time }}</h3>
             </div>
 
             <div>
 
                 <h3 class="font-bold"><span
-                        class=" font-bold text-xl  text-red-800 font-serif px-2">Price:</span>Rs.
+                        class=" font-bold text-xl  text-slate-800 font-serif px-2">Price:</span>Rs.
                         @if($flightDetails->seats<=5)
                         {{$flightDetails->price+1500}}
                         @elseif($flightDetails->seats<=10)
@@ -156,7 +156,7 @@
 
                     <div class="lg:px-24 rounded-lg">
                         @if ($flightDetails->seats > 0)
-                            <div class="bg-red-100 p-5">
+                            <div class="bg-slate-100 p-5">
                                 <div class="mt-8 space-y-6">
                                     <input type="hidden" name="remember" value="true">
                                     <div class="rounded-md shadow-sm -space-y-px">
@@ -343,7 +343,7 @@
                         <button 
                         onclick="sendEmail()"
                          type="submit" wire:click="bookNow({{ $flightDetails->id }})"
-                            class="group relative text-lg w-full flex justify-center py-2 px-4 border border-transparent  font-medium rounded-md text-white bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-offset-2">
+                            class="group relative text-lg w-full flex justify-center py-2 px-4 border border-transparent  font-medium rounded-md text-white bg-green-400 focus:outline-none focus:ring-2 focus:ring-offset-2">
                             Book
                         </button>
                     </div>

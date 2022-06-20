@@ -8,7 +8,7 @@
                     <div class="flex flex-row items-center justify-between p-4">
                         <a href="{{ route('home') }}"
                             class="text-lg font-semibold tracking-widest text-gray-900 uppercase rounded-lg dark-mode:text-white focus:outline-none focus:shadow-outline">Fly
-                            world</a>
+                            Nepal</a>
                         <button class="rounded-lg md:hidden focus:outline-none focus:shadow-outline"
                             @click="open = !open">
                             <svg fill="currentColor" viewBox="0 0 20 20" class="w-6 h-6">
@@ -46,7 +46,7 @@
                         <div class="flex flex-row items-center justify-between p-4">
                             <a href="{{ route('home') }}"
                                 class="text-lg font-semibold tracking-widest text-gray-900 uppercase rounded-lg dark-mode:text-white focus:outline-none focus:shadow-outline">Fly
-                                world</a>
+                                Nepal</a>
                             <button class="rounded-lg md:hidden focus:outline-none focus:shadow-outline"
                                 @click="open = !open">
                                 <svg fill="currentColor" viewBox="0 0 20 20" class="w-6 h-6">
@@ -91,7 +91,7 @@
                         <div class="shrink-0 flex items-center">
                             <a href="{{ route('dashboard') }}" class="text-lg font-bold">
                                 {{-- <x-jet-application-mark class="block h-9 w-auto" /> --}}
-                                Fly World
+                                Fly Nepal
                             </a>
                         </div>
                         <!-- Navigation Links -->

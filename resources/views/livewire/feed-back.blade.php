@@ -4,7 +4,27 @@
 
     <!-- component -->
 <section>
+    @if (session()->has('message'))
+        
+    <div id="alert-additional-content-3" class=" mb-4 bg-green-100 rounded-lg dark:bg-green-200" role="alert">
+        <div class="flex items-center">
+          <svg class="mr-2 w-5 h-5 text-green-700 dark:text-green-800" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
+          <h3 class="text-lg font-medium text-green-700 dark:text-green-800">{{ session('message')}}</h3>
+        </div>
+        <div class="flex">
+          <button type="button" class="text-green-700 bg-transparent border border-green-700 hover:bg-green-800 hover:text-white focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-xs px-3 py-1.5 text-center dark:border-green-800 dark:text-green-800 dark:hover:text-white" onclick="abc()" aria-label="Close">
+            Dismiss
+          </button>
+        </div>
+      </div>
+      <script>
+        function abc(){
+            document.getElementById("alert-additional-content-3").style.visibility = "hidden";
+        }
+      </script>
+@endif
 	<div class="bg-red-300 text-white py-20">
+    
 		<div class="container mx-auto flex flex-col md:flex-row my-6 md:my-24">
 			<div class="flex flex-col w-full lg:w-1/3 p-8">
 				<p class="ml-6 text-yellow-300 text-lg uppercase tracking-loose">REVIEW</p>
@@ -21,18 +41,24 @@
 								class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-white">
 								<div class="flex-auto p-5 lg:p-10">
 									<h4 class="text-2xl mb-4 text-black font-semibold">Have a suggestion?</h4>
-									<form>
+									<div>
 										<div class="relative w-full mb-3">
 											<label class="block uppercase text-gray-700 text-xs font-bold mb-2"
                         for="name">Name</label><input type="text" class="border-0 px-3 py-3 rounded text-sm shadow w-full
                     bg-gray-300 placeholder-black text-gray-800 outline-none focus:bg-gray-400" placeholder=" "
                         style="transition: all 0.15s ease 0s;" wire:model="name" required />
+                        @error('name')
+                                                    <span class="text-rose-600">{{ $message }}</span>
+                                                @enderror
                     </div>
                     <div class="relative w-full mb-3">
                         <label class="block uppercase text-gray-700 text-xs font-bold mb-2"
     for="name">Email</label><input type="email" class="border-0 px-3 py-3 rounded text-sm shadow w-full
 bg-gray-300 placeholder-black text-gray-800 outline-none focus:bg-gray-400" placeholder="Email"
     style="transition: all 0.15s ease 0s;" wire:model="email" required />
+    @error('email')
+                                                    <span class="text-rose-600">{{ $message }}</span>
+                                                @enderror
 </div>
 											<div class="relative w-full mb-3">
 												<label class="block uppercase text-gray-700 text-xs font-bold mb-2"
@@ -40,6 +66,9 @@ bg-gray-300 placeholder-black text-gray-800 outline-none focus:bg-gray-400" plac
                         cols="80"
                         class="border-0 px-3 py-3 bg-gray-300 placeholder-black text-gray-800 rounded text-sm shadow focus:outline-none w-full"
                         placeholder="" wire:model="comment" required></textarea>
+                        @error('comment')
+                                                    <span class="text-rose-600">{{ $message }}</span>
+                                                @enderror
 											</div>
 											<div class="text-center mt-6">
 												<button id="feedbackBtn"
@@ -47,7 +76,7 @@ bg-gray-300 placeholder-black text-gray-800 outline-none focus:bg-gray-400" plac
                         wire:click="save()" style="transition: all 0.15s ease 0s;">Submit
                       </button>
 											</div>
-                                        </form>
+                                        </div>
 								</div>
 							</div>
 						</div>

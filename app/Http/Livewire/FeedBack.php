@@ -3,6 +3,8 @@
 namespace App\Http\Livewire;
 
 use App\Models\FeedBack as ModelsFeedBack;
+use Illuminate\Contracts\Session\Session;
+use Illuminate\Support\Facades\Redirect;
 use Livewire\Component;
 
 class FeedBack extends Component
@@ -15,7 +17,6 @@ class FeedBack extends Component
     $this->validate([
         "name" => "required", 
         "email"=>"required|email",
-
         "comment"=>"required",
     ]);
   
@@ -25,7 +26,8 @@ class FeedBack extends Component
     $comments->email=$this->email;
     $comments->comment=$this->comment;
     $comments->save();
-    return redirect('/');
+    session()->flash('message', 'Feedback sent  .');
+    return redirect('/feedback');
    
 
 }

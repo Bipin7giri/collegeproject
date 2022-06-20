@@ -43,10 +43,10 @@
                              </svg>
                           </div>
                           <div class="flex-1 min-w-0">
-                             <p class="text-sm font-medium text-gray-900 truncate">
+                             <p class="text-sm font-medium text-purple-400 truncate">
                                 {{$user->name}}
                              </p>
-                             <p class="text-sm text-gray-500 truncate">
+                             <p class="text-sm text-slate-500 truncate">
                                 <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="17727a767e7b57607e7973646372653974787a">{{$user->email}}</a>
                              </p>
                           </div>
