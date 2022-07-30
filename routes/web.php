@@ -3,7 +3,9 @@
 use App\Http\Livewire\Admin\AddFlightDetails;
 use App\Http\Livewire\Admin\AddMessage;
 use App\Http\Livewire\Admin\FeedBackList;
+use App\Http\Livewire\Admin\Graph;
 use App\Http\Livewire\Admin\SeatsDetails;
+use App\Http\Livewire\Admin\Stats;
 use App\Http\Livewire\Admin\TicketsHistory;
 use App\Http\Livewire\Admin\UsersList;
 use App\Http\Livewire\BookTickets;
@@ -51,7 +53,7 @@ Route::get('/userslist',UsersList::class)->name('userlist');
 Route::get('/ticketshistory',TicketsHistory::class)->name('ticketsall');
 Route::get('/seats',SeatsDetails::class)->name('seats');
 Route::get('/addalertmessage',AddMessage::class)->name('addalertmessage');
-
+Route::get('/stats',Stats::class)->name('stats');
 });
 
 
