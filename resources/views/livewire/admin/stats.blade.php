@@ -32,7 +32,7 @@
                             </div>
                             <div class="flex-1 text-right md:text-center">
                                 <h5 class="font-bold uppercase text-gray-500">Total Customer</h5>
-                                {{-- <h3 class="font-bold text-3xl">{{$totalCustomers}} <span class="text-pink-500"><i class="fas fa-exchange-alt"></i></span></h3> --}}
+                                <h3 class="font-bold text-3xl">{{$users}}<span class="text-pink-500"><i class="fas fa-exchange-alt"></i></span></h3>
                             </div>
                         </div>
                     </div>
@@ -46,8 +46,8 @@
                                 <div class="rounded p-3 bg-yellow-600"><i class="fas fa-user-plus fa-2x fa-fw fa-inverse"></i></div>
                             </div>
                             <div class="flex-1 text-right md:text-center">
-                                <h5 class="font-bold uppercase text-gray-500">Total Company</h5>
-                                {{-- <h3 class="font-bold text-3xl">{{$totalCompany}} <span class="text-yellow-600"><i class="fas fa-caret-up"></i></span></h3> --}}
+                                <h5 class="font-bold uppercase text-gray-500">Total Tickets Booked</h5>
+                                <h3 class="font-bold text-3xl">{{$totalTickets}} <span class="text-yellow-600"><i class="fas fa-caret-up"></i></span></h3>
                             </div>
                         </div>
                     </div>
@@ -110,7 +110,7 @@
                    
                     <div class="bg-white border rounded shadow">
                         <div class="border-b p-3">
-                            <h5 class="font-bold uppercase text-gray-600">Most Number Of sales</h5>
+                            <h5 class="font-bold uppercase text-gray-600">Most Number Of Tickets Booked By The Customer</h5>
                         </div>
                         <div class="p-5"><div class="chartjs-size-monitor" style="position: absolute; inset: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
                             <canvas id="chartjs-1" class="chartjs chartjs-render-monitor" width="550" height="275" style="display: block; height: 220px; width: 440px;"></canvas>
@@ -225,7 +225,7 @@
                     <!--/Graph Card-->
                 </div>
 
-                <div class="w-full md:w-1/2 xl:w-1/3 p-3">
+                {{-- <div class="w-full md:w-1/2 xl:w-1/3 p-3">
                     <!--Graph Card-->
                     <div class="bg-white border rounded shadow">
                         <div class="border-b p-3">
@@ -248,9 +248,9 @@
                         </div>
                     </div>
                     <!--/Graph Card-->
-                </div>
+                </div> --}}
 
-                <div class="w-full md:w-1/2 xl:w-1/3 p-3">
+                {{-- <div class="w-full md:w-1/2 xl:w-1/3 p-3">
                     <!--Template Card-->
                     <div class="bg-white border rounded shadow">
                         <div class="border-b p-3">
@@ -261,7 +261,7 @@
                         </div>
                     </div>
                     <!--/Template Card-->
-                </div>
+                </div> --}}
             </div>
 
             <!--/ Console Content-->

@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use App\Models\FlightDetails;
 use App\Models\TicketDetails;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 
 class BookTickets extends Component
@@ -31,12 +32,25 @@ class BookTickets extends Component
         // @endif
         $seats = FlightDetails::select('seats')-> where('id',$this->flight_id)->get();
         $prices = FlightDetails::select('price')->where('id',$this->flight_id)->get();
+        $count = TicketDetails::select(DB::raw('count(*) as total'))
+       ->groupBy('user_id')
+       ->get();
+      
+   
+        foreach($count as $c){
+            $t=$c->total;
+        }
+
         foreach($prices as $p){
             $price= $p->price;
         }
         foreach($seats as $s){
            $seats= $s->seats;
         }
+        if($t>=5){
+            $this->fare = $price-500;
+        }
+
         // dd($price);
        if($seats<=5){
         $this->fare= $price+1500;

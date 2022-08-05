@@ -12,9 +12,7 @@ class ViewTickets extends Component
   
     protected $queryString = ['search','to','from','date'];
   
-    // public function mount(){
-    //     $sea
-    // }
+
     public function mount(){
         $prices = FlightDetails::select('price')->get();
         $seats = FlightDetails::select('seats')->get();

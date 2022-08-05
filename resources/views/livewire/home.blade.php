@@ -80,9 +80,14 @@
                                   <p class="font-bold text-sm">{{$flightDetail->departure_time}}</p>
                                 </div>
                               </div>
-                            <button
-                                        class="px-6 mt-5  text-center py-2 transition ease-in duration-200 text-red-500    uppercase rounded-full hover:bg-red-300 hover:text-white border-2 border-red-900 focus:outline-none"><a href="{{ route('booktickets', $flightDetail->id) }}">Book Now</a>
-                                        </button>
+                              @if (!Auth::user())
+                              <button class="px-6 mt-5  text-center py-2 transition ease-in duration-200 text-red-500    uppercase rounded-full hover:bg-red-300 hover:text-white border-2 border-red-900 focus:outline-none"><a href="{{ route('login') }}">Book Now</a>
+                              </button>
+                              @else
+                              <button class="px-6 mt-5  text-center py-2 transition ease-in duration-200 text-red-500    uppercase rounded-full hover:bg-red-300 hover:text-white border-2 border-red-900 focus:outline-none"><a href="{{ route('booktickets', $flightDetail->id) }}">Book Now</a>
+                              </button>
+                            @endif
+                              
                           </div>
                         </div>
                       </div>
